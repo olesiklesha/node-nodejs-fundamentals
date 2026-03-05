@@ -35,7 +35,7 @@ const snapshot = async () => {
             entries.push({...res, content, size: stat.size})
         }
 
-        await fs.writeFile(path.join(WORKSPACE_PATH, 'snapshot.json'), JSON.stringify({
+        await fs.writeFile(path.join(path.dirname(WORKSPACE_PATH), 'snapshot.json'), JSON.stringify({
             rootPath: WORKSPACE_PATH,
             entries,
         }));
