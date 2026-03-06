@@ -7,7 +7,7 @@ const WORKSPACE_PATH = path.resolve('../../workspace')
 
 const snapshot = async () => {
     try {
-        const items = await fs.readdir(WORKSPACE_PATH, { withFileTypes: true, recursive: true }).catch(() => {
+        const items = await fs.readdir(WORKSPACE_PATH, {withFileTypes: true, recursive: true}).catch(() => {
             throw new Error(ERROR_MESSAGES.fsError)
         });
 
@@ -27,9 +27,9 @@ const snapshot = async () => {
 
                 continue;
             }
-
+            
             const itemPath = path.join(item.parentPath, item.name);
-            const content = await fs.readFile(itemPath, {encoding: 'utf-8'});
+            const content = await fs.readFile(itemPath, {encoding: 'base64'});
             const stat = await fs.stat(itemPath)
 
             entries.push({...res, content, size: stat.size})
