@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path';
 import {ERROR_MESSAGES} from "../constants.js";
 
-const FILE_PATH = path.resolve('../../snapshot.json')
+const FILE_PATH = path.resolve('snapshot.json')
 const RESTORED_DIR_PATH = path.join(path.dirname(FILE_PATH), 'workspace_restored');
 
 const restore = async () => {

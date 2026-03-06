@@ -3,7 +3,7 @@ import path from 'node:path';
 import {ERROR_MESSAGES} from "../constants.js";
 
 
-const WORKSPACE_PATH = path.resolve('../../workspace')
+const WORKSPACE_PATH = path.resolve('workspace')
 
 const snapshot = async () => {
     try {
@@ -27,7 +27,7 @@ const snapshot = async () => {
 
                 continue;
             }
-            
+
             const itemPath = path.join(item.parentPath, item.name);
             const content = await fs.readFile(itemPath, {encoding: 'base64'});
             const stat = await fs.stat(itemPath)
