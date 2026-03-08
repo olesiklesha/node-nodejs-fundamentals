@@ -1,8 +1,22 @@
+import process from 'node:process'
+import {Transform} from 'node:stream';
+
+
+let counter = 1;
+
+
+class Numberer extends Transform {
+    _transform(chunk, encoding, callback) {
+        this.push(`${counter++} | ${chunk.toString()}`);
+    
+        callback();
+    }
+}
+
+
 const lineNumberer = () => {
-  // Write your code here
-  // Read from process.stdin
-  // Use Transform Stream to prepend line numbers
-  // Write to process.stdout
+    process.stdin.pipe(new Numberer()).pipe(process.stdout);
 };
 
 lineNumberer();
+
